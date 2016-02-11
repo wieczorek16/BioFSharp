@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>EmpiricalPMF - BioFSharp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="Timo Mühlhaus"/>
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
+
+    <link type="text/css" rel="stylesheet" href="/BioFSharp/content/style.css" />
+    <script type="text/javascript" src="/BioFSharp/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://github.com/muehlhaus/BioFSharp">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="/BioFSharp/index.html">BioFSharp</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>EmpiricalPMF</h1>
+<p>
+  <span>Namespace: BioFSharp.Stats.Descriptive</span><br />
+</p>
+<div class="xmldoc">
+<p>Represents a probability mass function (map from values to probabilities).</p>
+
+
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '283', 283)" onmouseover="showTip(event, '283', 283)">
+            add pmfA pmfB
+          </code>
+          <div class="tip" id="283">
+            <strong>Signature:</strong> pmfA:Map&lt;float,float&gt; -&gt; pmfB:Map&lt;float,float&gt; -&gt; Map&lt;float,float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L87-87" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Adds the values in pmfA to pmfB</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '284', 284)" onmouseover="showTip(event, '284', 284)">
+            create bandwidth data
+          </code>
+          <div class="tip" id="284">
+            <strong>Signature:</strong> bandwidth:float -&gt; data:seq&lt;float&gt; -&gt; Map&lt;float,float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L21-21" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>probability mass function</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '285', 285)" onmouseover="showTip(event, '285', 285)">
+            exp pmf
+          </code>
+          <div class="tip" id="285">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; Map&lt;float,float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L130-130" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Exponentiates the probabilities</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '286', 286)" onmouseover="showTip(event, '286', 286)">
+            getValues pmf
+          </code>
+          <div class="tip" id="286">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; seq&lt;float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L58-58" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns values from pmf 
+Attention: original values have been discretised</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '287', 287)" onmouseover="showTip(event, '287', 287)">
+            getXValues pmf
+          </code>
+          <div class="tip" id="287">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; seq&lt;float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L53-53" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns distinct values from pmf</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '288', 288)" onmouseover="showTip(event, '288', 288)">
+            getYValues pmf
+          </code>
+          <div class="tip" id="288">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; seq&lt;float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L64-64" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns distinct values from pmf</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '289', 289)" onmouseover="showTip(event, '289', 289)">
+            getZip pmf
+          </code>
+          <div class="tip" id="289">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; seq&lt;float * float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L36-36" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns: tuple of (sorted value sequence, probability sequence)</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '290', 290)" onmouseover="showTip(event, '290', 290)">
+            log pmf
+          </code>
+          <div class="tip" id="290">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; Map&lt;float,float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L125-125" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Log transforms the probabilities</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '291', 291)" onmouseover="showTip(event, '291', 291)">
+            makeMixture pmfs
+          </code>
+          <div class="tip" id="291">
+            <strong>Signature:</strong> pmfs:seq&lt;Map&lt;float,float&gt;&gt; -&gt; Map&lt;float,float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L136-136" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Make a mixture distribution</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '292', 292)" onmouseover="showTip(event, '292', 292)">
+            maxLike pmf
+          </code>
+          <div class="tip" id="292">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; float<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L44-44" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns the largest probability in the map.</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '293', 293)" onmouseover="showTip(event, '293', 293)">
+            mean pmf
+          </code>
+          <div class="tip" id="293">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; float&lt;MeasureOne&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L112-112" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Computes the mean of a PMF</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '294', 294)" onmouseover="showTip(event, '294', 294)">
+            normalize fraction pmf
+          </code>
+          <div class="tip" id="294">
+            <strong>Signature:</strong> fraction:float -&gt; pmf:Map&lt;float,float&gt; -&gt; Map&lt;float,float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L92-92" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Normalizes this PMF so the sum of all probabilities equals fraction</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '295', 295)" onmouseover="showTip(event, '295', 295)">
+            ofHistogram hist
+          </code>
+          <div class="tip" id="295">
+            <strong>Signature:</strong> hist:Map&lt;&#39;?8606,int&gt; -&gt; Map&lt;&#39;?8606,float&gt;<br />
+                          <strong>Type parameters:</strong> '?8606          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L31-31" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Creates Pmf of a Histogram (normalize by n)</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '296', 296)" onmouseover="showTip(event, '296', 296)">
+            probabilities pmf
+          </code>
+          <div class="tip" id="296">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; seq&lt;float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L78-78" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Gets an unsorted sequence of probabilities</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '297', 297)" onmouseover="showTip(event, '297', 297)">
+            probabilityAt pmf x
+          </code>
+          <div class="tip" id="297">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; x:float -&gt; float<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L71-71" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Gets the probability associated with the value x</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '298', 298)" onmouseover="showTip(event, '298', 298)">
+            random pmf
+          </code>
+          <div class="tip" id="298">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; float<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L99-99" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Chooses a random element from this PMF</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '299', 299)" onmouseover="showTip(event, '299', 299)">
+            subtract pmfA pmfB
+          </code>
+          <div class="tip" id="299">
+            <strong>Signature:</strong> pmfA:Map&lt;float,float&gt; -&gt; pmfB:Map&lt;float,float&gt; -&gt; Map&lt;float,float&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L83-83" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Subtracts the values pmfA from pmfB</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '300', 300)" onmouseover="showTip(event, '300', 300)">
+            sum pmf
+          </code>
+          <div class="tip" id="300">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; float<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L40-40" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns the total of the probabilities in the map</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '301', 301)" onmouseover="showTip(event, '301', 301)">
+            var pmf
+          </code>
+          <div class="tip" id="301">
+            <strong>Signature:</strong> pmf:Map&lt;float,float&gt; -&gt; float&lt;MeasureOne&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L120-120" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Computes the variance of a PMF</p>
+
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '302', 302)" onmouseover="showTip(event, '302', 302)">
+            varAround mu pmf
+          </code>
+          <div class="tip" id="302">
+            <strong>Signature:</strong> mu:float -&gt; pmf:Map&lt;float,float&gt; -&gt; float&lt;MeasureOne&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/muehlhaus/BioFSharp/tree/master/src/BioFSharp.Stats/Descriptive/EmpiricalPMF.fs#L116-116" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Computes the variance of a PMF around mu</p>
+
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <img src="/BioFSharp/img/logo.png" alt="F# Project" style="width:150px;margin:10px" />  
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">BioFSharp</li>
+            <li><a href="/BioFSharp/index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://nuget.org/packages/BioFSharp">Get Library via NuGet</a></li>
+            <li><a href="http://github.com/muehlhaus/BioFSharp">Source Code on GitHub</a></li>
+            <li><a href="/BioFSharp/license.html">License</a></li>
+            <li><a href="/BioFSharp/release-notes.html">Release Notes</a></li>
+            
+            <!-- Add new tutorials here (TM) -->
+            <li class="nav-header">Getting started</li>
+            <li><a href="/BioFSharp/tutorial.html">Sample tutorial</a></li>
+            <li><a href="/BioFSharp/FSharpBio.IO.html">FSharpBio.IO</a></li>
+
+
+            <li class="nav-header">Documentation</li>
+            <li><a href="/BioFSharp/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/muehlhaus/BioFSharp"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+  </body>
+  </html>
