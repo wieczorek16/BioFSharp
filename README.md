@@ -5,7 +5,7 @@ BioFSharp aims to be a user-friendly library for Bioinformatics written in F#. I
 structures for common biological objects like amino acids and nucleotides based on chemical formulas and chemical elements. 
 It facilitates some basic machine learning task as well as statistical analysis of biological data set. 
 
-It is the first alpha version 1.0.0 and thought as a starting point for bioinformatics in F#.
+It is the first alpha version 0.0.1 and thought as a starting point for bioinformatics in F#.
 
 
 Documentation
