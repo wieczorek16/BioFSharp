@@ -46,7 +46,10 @@ Formula.add fAlanin Formula.Table.H2O  |> Formula.monoisoMass
 
 
 
-let carboxyAmidoMethylation = ModificationInfo.createModificationWithAdd "CarboxyAmidoMethylation" ModificationInfo.ModLocation.Residual  (Formula.parseFormulaString "CH3")
+let carboxyAmidoMethylation =
+    ModificationInfo.createModificationWithAdd "CarboxyAmidoMethylation"
+                                                ModificationInfo.ModLocation.Residual
+                                                (Formula.parseFormulaString "CH3")
  
 //Carboxyamidomethylated Cysteine
 
