@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>b7722cf9-3ac1-4a03-8214-9dc2d7fdd8c9</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>BioFSharp.Stats</RootNamespace>
+    <AssemblyName>BioFSharp.Stats</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
+    <Name>BioFSharp.Stats</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <Tailcalls>false</Tailcalls>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile>bin\Debug\BioFSharp.Stats.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>3</WarningLevel>
+    <DocumentationFile>bin\Release\BioFSharp.Stats.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '11.0'">
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets')">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <Import Project="$(FSharpTargetsPath)" />
+  <ItemGroup>
+    <!-- Core -->
+    <Compile Include="Auxiliary.fs" />
+    <Compile Include="Random.fs" />
+    <Compile Include="Intervals.fs" />
+    <Compile Include="SpecialFunction.fs" />
+    <Compile Include="StatisticalMeasure.fs" />
+    <Compile Include="Rank.fs" />
+    <!-- Descriptive -->
+    <Compile Include="Descriptive\Correlation.fs" />
+    <Compile Include="Descriptive\EmpiricalPMF.fs" />
+    <Compile Include="Descriptive\Histogram.fs" />
+    <Compile Include="Descriptive\Percentiles.fs" />
+    <Compile Include="Descriptive\ProbStats.fs" />
+    <Compile Include="Descriptive\Transform.fs" />
+    <Compile Include="Descriptive\Venn.fs" />
+    <Compile Include="Descriptive\QuantileNorm.fs" />
+    <!-- Testing -->
+    <Compile Include="Testing\TestStatistics.fs" />
+    <Compile Include="Testing\Anova.fs" />
+    <Compile Include="Testing\TTest.fs" />
+    <Compile Include="Testing\PostHoc.fs" />
+    <Compile Include="Testing\PvalueAdjust.fs" />
+    <Compile Include="Testing\ChiSquareTest.fs" />
+    <Compile Include="Testing\Hypergeometric.fs" />
+    <!-- Fitting -->
+    <Compile Include="Fitting\Approximation.fs" />
+    <Compile Include="Fitting\Bandwidth.fs" />
+    <Compile Include="Fitting\Bootstrap.fs" />
+    <Compile Include="Fitting\CrossValidation.fs" />
+    <Compile Include="Fitting\Interpolation.fs" />
+    <Compile Include="Fitting\KernelDensityEstimation.fs" />
+    <Compile Include="Fitting\MissingValue.fs" />
+    <Compile Include="Fitting\Regression.fs" />
+    <Compile Include="Fitting\Spline.fs" />
+    <!-- Signal -->
+    <Compile Include="Signal\Filtering.fs" />
+    <!-- ML -->
+    <Compile Include="ML\Unsupervised\PrincipalComponentAnalysis.fs" />
+    <Compile Include="ML\Unsupervised\DistanceMetrics.fs" />
+    <Compile Include="ML\Unsupervised\IterativeClustering.fs" />
+    <Compile Include="ML\Unsupervised\DensityClustering.fs" />
+    <Compile Include="ML\Unsupervised\HierarchicalClustering.fs" />
+    <!-- Content -->
+    <Compile Include="GSEA.fs" />
+    <None Include="BioFSharp.Stats.fsx" />
+    <Content Include="packages.config" />
+    <Content Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FSharp.Core">
+      <HintPath>..\..\packages\FSharp.Core.4.0.0.1\lib\net40\FSharp.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\..\packages\MathNet.Numerics.3.8.0\lib\net40\MathNet.Numerics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MathNet.Numerics.FSharp">
+      <HintPath>..\..\packages\MathNet.Numerics.FSharp.3.8.0\lib\net40\MathNet.Numerics.FSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FSharpAux\FSharpAux.fsproj">
+      <Name>FSharpAux</Name>
+      <Project>{bc243081-abd4-417c-a673-4837916dd6a5}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y "$(TargetDir)*.dll"  "$(SolutionDir)bin\"
+xcopy /Y "$(TargetDir)*.xml" "$(SolutionDir)bin\"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
