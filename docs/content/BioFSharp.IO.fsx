@@ -39,7 +39,7 @@ let converter = BioSequences.OptionConverter.charToOptionStandardAminoAcid
 let fastaPath = __SOURCE_DIRECTORY__ + "/data/chlamy3proteins.fasta"
 let chlamy3proteins =
     // Read .fastA
-    FastA.fromFileWithOptional converter fastaPath
+    FastA.fromFile converter fastaPath
     |> Seq.toArray
 
 
