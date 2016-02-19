@@ -91,6 +91,7 @@
     <Compile Include="ML\Unsupervised\IterativeClustering.fs" />
     <Compile Include="ML\Unsupervised\DensityClustering.fs" />
     <Compile Include="ML\Unsupervised\HierarchicalClustering.fs" />
+    <Compile Include="ML\Unsupervised\GapStatistics.fs" />
     <!-- Content -->
     <Compile Include="GSEA.fs" />
     <None Include="BioFSharp.Stats.fsx" />

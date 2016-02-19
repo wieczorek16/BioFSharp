@@ -70,7 +70,6 @@ xcopy /Y "$(TargetDir)*.xml" "$(SolutionDir)bin\"</PostBuildEvent>
     <Compile Include="Math.fs" />
     <Compile Include="Memoization.fs" />
     <Compile Include="MultiMap.fs" />
-    <Compile Include="NumericLiteralG.fs" />
     <Compile Include="PSeq.fs" />
     <Compile Include="Regex.fs" />
     <Compile Include="Seq.fs" />
