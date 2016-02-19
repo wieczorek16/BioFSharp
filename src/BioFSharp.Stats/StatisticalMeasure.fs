@@ -6,7 +6,7 @@
 module StatisticalMeasure = 
     
     open FSharpAux
-    open FSharpAux.NumericLiteralG
+    //open FSharpAux.NumericLiteralG
 
     /// Range min max
     type Range = { Min : float;
