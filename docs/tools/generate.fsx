@@ -14,7 +14,7 @@ let referenceBinaries = ["BioFSharp.dll";"BioFSharp.IO.dll";"BioFSharp.Mz.dll";"
 // Web site location for the generated documentation
 let website = "/BioFSharp"
 
-let githubLink = "http://github.com/muehlhaus/BioFSharp"
+let githubLink = "http://github.com/csbiology/BioFSharp"
 
 // Specify more information about your project
 let info =
