@@ -52,7 +52,6 @@ let testAssemblies = "tests/**/bin/Release/*Tests*.dll"
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
-
 //let gitOwner = "muehlhaus"
 let gitOwner = "csbiology" 
 let gitHome = "https://github.com/" + gitOwner
@@ -61,8 +60,7 @@ let gitHome = "https://github.com/" + gitOwner
 let gitName = "BioFSharp"
 
 // The url for the raw files hosted
-//let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/muehlhaus"
-let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/" + gitOwner
+let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/muehlhaus"
 
 // --------------------------------------------------------------------------------------
 // END TODO: The rest of the file includes standard build steps

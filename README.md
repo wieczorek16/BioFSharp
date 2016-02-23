@@ -11,7 +11,7 @@ It is the first alpha version 0.0.1 and thought as a starting point for bioinfor
 Documentation
 =============
 
-The documentation can be found [here.](http://muehlhaus.github.io/BioFSharp)
+The documentation can be found [here.](http://csbiology.github.io/BioFSharp)
 The documentation for this library is automatically generated (using the F# Formatting) from *.fsx and *.md files in the docs folder. If you find a typo, please submit a pull request!
 
 

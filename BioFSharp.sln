@@ -30,6 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{8E6D
 	ProjectSection(SolutionItems) = preProject
 		docs\content\BioDB.fsx = docs\content\BioDB.fsx
 		docs\content\BioFSharp.IO.fsx = docs\content\BioFSharp.IO.fsx
+		docs\content\BioFSharp.Stats.ML.fsx = docs\content\BioFSharp.Stats.ML.fsx
 		docs\content\index.fsx = docs\content\index.fsx
 		docs\content\tutorial.fsx = docs\content\tutorial.fsx
 	EndProjectSection
