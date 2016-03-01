@@ -9,8 +9,8 @@
 // for binaries output to root bin folder please add the filename only to the 
 // referenceBinaries list below in order to generate documentation for the binaries.
 // (This is the original behaviour of ProjectScaffold prior to multi project support)
-//let referenceBinaries = ["BioFSharp.dll";"BioFSharp.IO.dll";"BioFSharp.Mz.dll";"BioFSharp.Stats.dll";"FSharpAux.dll";]//"FSharpAux.IO.dll";]
-let referenceBinaries = ["BioFSharp.dll";"BioFSharp.IO.dll";"BioFSharp.Mz.dll";"BioFSharp.Stats.dll"; "FSharpAux.dll";"FSharpAux.dll";"FSharpAux.IO.dll";]
+//let referenceBinaries = ["BioFSharp.Stats.dll";]//"BioFSharp.Stats.dll";"FSharpAux.dll";]//"FSharpAux.IO.dll";]
+let referenceBinaries = ["BioFSharp.dll";"BioFSharp.IO.dll";"BioFSharp.Mz.dll";"BioFSharp.Stats.dll"; "FSharpAux.dll";"FSharpAux.IO.dll";]
 // Web site location for the generated documentation
 let website = "/BioFSharp"
 

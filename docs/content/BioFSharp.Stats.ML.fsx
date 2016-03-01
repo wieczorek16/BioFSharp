@@ -106,10 +106,10 @@ let plotScoresColoredByGrouping (transformedData : Matrix<float>)
     |> Chart.Combine    
     |> Chart.ShowChart
 
-plotLoadingsColoredByGrouping irisPCA 
-    [ "Sepal length"; "Sepal width"; "Petal length"; "Petal width" ] 
-    (fun x -> x) 1 2
-plotScoresColoredByGrouping irisDataPCA irisLables (fun x -> x) 1 2
+//plotLoadingsColoredByGrouping irisPCA 
+//    [ "Sepal length"; "Sepal width"; "Petal length"; "Petal width" ] 
+//    (fun x -> x) 1 2
+//plotScoresColoredByGrouping irisDataPCA irisLables (fun x -> x) 1 2
 
 (**
 
@@ -155,8 +155,8 @@ let plotScatternMatrix (inputMatrix : Matrix<float>) =
     |> Chart.RowsWithBreak inputMatrix.ColumnCount
     |> Chart.ShowChart
 
-plotScatternMatrix irisFeaturesMatrix
-plotScatternMatrixColoredByGrouping irisFeaturesMatrix irisLables (fun x -> x)
+//plotScatternMatrix irisFeaturesMatrix
+//plotScatternMatrixColoredByGrouping irisFeaturesMatrix irisLables (fun x -> x)
 
 (**
 Iterative clustering 
@@ -180,22 +180,22 @@ let kmeansResult =
     IterativeClustering.kmeans <| DistanceMetrics.euclidean <| cvmaxFactory 
     <| (Matrix.toRowArrays irisFeaturesMatrix) <| 3
 
-// Visualization of kMeans clustering result.
-let chartsOfClassifiedData = 
-    Matrix.toRowArrays irisFeaturesMatrix
-    |> Seq.groupBy (fun dataPoint -> fst (kmeansResult.Classifier dataPoint))
-    |> Seq.sortBy fst
-    |> Seq.map (fun (key, values) -> 
-           values
-           |> Seq.map 
-                  (fun v -> 
-                  Chart.Line v 
-                  |> Chart.WithStyling
-                         (Color = System.Drawing.Color.Silver, BorderWidth = 1))
-           |> Chart.Combine
-           |> Chart.WithTitle(key.ToString()))
-    |> Chart.Rows
-    |> Chart.ShowChart
+//// Visualization of kMeans clustering result.
+//let chartsOfClassifiedData = 
+//    Matrix.toRowArrays irisFeaturesMatrix
+//    |> Seq.groupBy (fun dataPoint -> fst (kmeansResult.Classifier dataPoint))
+//    |> Seq.sortBy fst
+//    |> Seq.map (fun (key, values) -> 
+//           values
+//           |> Seq.map 
+//                  (fun v -> 
+//                  Chart.Line v 
+//                  |> Chart.WithStyling
+//                         (Color = System.Drawing.Color.Silver, BorderWidth = 1))
+//           |> Chart.Combine
+//           |> Chart.WithTitle(key.ToString()))
+//    |> Chart.Rows
+//    |> Chart.ShowChart
 
 
 (**
@@ -220,15 +220,15 @@ let GapStatisticResult =
     GapStatistics.calculate pointGenerator 10 calcClusterDispersion 4 irisFeatureData
 
 // Visualization of gap statistics result.
-let chartGaps =
-    GapStatisticResult
-    |> Seq.map (fun gapSt -> gapSt.Gaps)
-    |> Chart.Line
-    |> Chart.WithStyling
-            (Color = System.Drawing.Color.Gray, BorderWidth = 1)
-    |> Chart.WithXAxis(Title = "# clusters")
-    |> Chart.WithYAxis(Title = "gaps")
-    |> Chart.ShowChart
+//let chartGaps =
+//    GapStatisticResult
+//    |> Seq.map (fun gapSt -> gapSt.Gaps)
+//    |> Chart.Line
+//    |> Chart.WithStyling
+//            (Color = System.Drawing.Color.Gray, BorderWidth = 1)
+//    |> Chart.WithXAxis(Title = "# clusters")
+//    |> Chart.WithYAxis(Title = "gaps")
+//    |> Chart.ShowChart
 
 
 (**
