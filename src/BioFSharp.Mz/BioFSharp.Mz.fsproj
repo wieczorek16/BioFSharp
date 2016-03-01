@@ -52,6 +52,7 @@
     <Compile Include="IsotopicDistribution.fs" />
     <Compile Include="Spectra.fs" />
     <Compile Include="Fragmentation.fs" />
+    <Compile Include="SearchDB.fs" />
     <Compile Include="SequestLike.fs" />
     <Compile Include="EmpiricalTargetDecoy.fs" />
     <None Include="BioFSharp.Mz.fsx" />

@@ -86,8 +86,9 @@
     <!-- Signal -->
     <Compile Include="Signal\Filtering.fs" />
     <!-- ML -->
+    <Compile Include="ML\DistanceMetrics.fs" />
+    <Compile Include="ML\Impute.fs" />
     <Compile Include="ML\Unsupervised\PrincipalComponentAnalysis.fs" />
-    <Compile Include="ML\Unsupervised\DistanceMetrics.fs" />
     <Compile Include="ML\Unsupervised\IterativeClustering.fs" />
     <Compile Include="ML\Unsupervised\DensityClustering.fs" />
     <Compile Include="ML\Unsupervised\HierarchicalClustering.fs" />
