@@ -8,6 +8,7 @@ module GapStatistics =
     open MathNet.Numerics
     open MathNet.Numerics.LinearAlgebra      
     
+    open BioFSharp.Stats.ML
     open BioFSharp.Stats.Descriptive
 
 

@@ -1,5 +1,6 @@
 ﻿namespace BioFSharp.Stats.ML.Unsupervised
 
+open BioFSharp.Stats.ML
 
 /// Agglomerative hierarchical clustering
 module HierarchicalClustering =

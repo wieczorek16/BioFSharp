@@ -3,6 +3,8 @@
 
 module DensityClustering =
     
+    open BioFSharp.Stats.ML
+    
     
     type LabeledData<'T> =
         | UnVisited of 'T

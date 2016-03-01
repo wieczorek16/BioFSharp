@@ -5,6 +5,7 @@
 module IterativeClustering =
     
     open BioFSharp.Stats
+    open BioFSharp.Stats.ML
     open DistanceMetrics    
     
     open MathNet.Numerics.LinearAlgebra
