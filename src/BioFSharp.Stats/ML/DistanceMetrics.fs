@@ -1,4 +1,4 @@
-﻿namespace BioFSharp.Stats.ML.Unsupervised
+﻿namespace BioFSharp.Stats.ML
 
 
 module DistanceMetrics =

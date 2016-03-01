@@ -113,3 +113,20 @@ module JaggedList =
         |> Array.map (fun a -> a |> List.ofArray)
         |> List.ofArray
 
+
+
+[<AutoOpen>]
+module JaggedSeq =
+
+
+    // Converts a jagged Seq into a jagged array
+    let ofJaggedSeq (data: seq<#seq<'T>>) =
+        data
+        |> Seq.map (fun s -> s |> Array.ofSeq)
+        |> Array.ofSeq
+
+    // Converts a jagged array into a jagged seq
+    let toJaggedSeq (arr: 'T [][]) =
+        arr
+        |> Seq.map (fun s -> s |> Array.toSeq)   
+
