@@ -48,7 +48,7 @@ module TestStatistics =
         ) = class
 
         let FStat  = MathNet.Numerics.Distributions.FisherSnedecor(d1,d2)
-        let pvalue = 1.0 - FStat.CumulativeDistribution(statistic)
+        let pvalue = 1.0 - FStat. CumulativeDistribution(statistic)
 
         member this.DegreesOfFreedom1     = d1
         member this.DegreesOfFreedom2     = d2

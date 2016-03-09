@@ -94,30 +94,36 @@ module Regression =
         ///    regression perfectly fits the data.
     *)
     let calulcateDetermination (actual:seq<float>) (expected:seq<float>) = 
-        let expectedMean = expected |> MathNet.Numerics.Statistics.Statistics.Mean
+        let meanY = MathNet.Numerics.Statistics.Statistics.Mean actual
         let SSE,SST =
             Seq.zip actual expected
             |> Seq.fold (fun (stateEx,stateA) (ex,a) -> 
                                            let dSSe = ex - a
-                                           let dSSt = ex - expectedMean
+                                           let dSSt = ex - meanY
                                            (stateEx + dSSe*dSSe,stateA + dSSt*dSSt)
                         ) (0.,0.)
-        1.0 - (SSE / SST)
+        ((SST - SSE) / SST)
  
 
-    /// Calculates Akaike information criterion (AIC) which is a measure of the relative quality of a statistical model for a given set of data    
+    /// Calculates Akaike information criterion (AIC) which is a measure of the relative quality of a regression model for a given set of data    
+    // ! Formula used for regression only (because number of model parameter are missing)
     let calcAIC order n sse = 
         n * (log (sse / n)) + (2. * order)
 
 
-    /// Calculates Bayesian information criterion (BIC) which is a measure of the relative quality of a statistical model for a given set of data
+    /// Calculates Bayesian information criterion (BIC) which is a measure of the relative quality of a regression model for a given set of data
+    // ! Formula used for regression only (because number of model parameter are missing)
     let calcBIC (order:float) n sse = 
         n * log (sse/n) + order * log (n) 
     
+    /// Calculates the residuals
+    let getResiduals (fitFunc:float -> float)  (x_data : Vector<float>) (y_data : Vector<float>) = 
+        Seq.map2 (fun x y -> let y_estimated = fitFunc x
+                             (y - y_estimated) ) x_data y_data
 
     /// Calculates SSE: sum of squares of errors
-    /// also: unexplained sum of squares
-    let private calculateSSE (fitFunc:float -> float)  (x_data : Vector<float>) (y_data : Vector<float>) = 
+    /// also: unexplained sum of squares    
+    let calculateSSE (fitFunc:float -> float)  (x_data : Vector<float>) (y_data : Vector<float>) = 
         Seq.map2 (fun x y -> let y_estimated = fitFunc x
                              (y - y_estimated) * (y - y_estimated) ) x_data y_data
         |> Seq.sum
@@ -125,7 +131,7 @@ module Regression =
 
     /// Calculates SST: sum of squares total
     /// also: total sum of squares
-    let private calculateSST (fitFunc:float -> float)  (x_data : Vector<float>) (y_data : Vector<float>) = 
+    let calculateSST (fitFunc:float -> float)  (x_data : Vector<float>) (y_data : Vector<float>) = 
         let meanY = MathNet.Numerics.Statistics.Statistics.Mean y_data
         x_data |> Vector.map (fun x -> let y_estimated = fitFunc x
                                        (y_estimated - meanY) * (y_estimated - meanY) )
@@ -136,13 +142,21 @@ module Regression =
 
     let private calculateANOVA (order:int) (fitFunc:float -> float)  (x_data : Vector<float>) (y_data : Vector<float>) = 
         let meanY = MathNet.Numerics.Statistics.Statistics.Mean y_data
-        let sst,sse = 
+        let sst,sse =
             Seq.zip x_data y_data
-            |> Seq.fold (fun (accT,accE) (x,y) -> let y_estimated = fitFunc x
-                                                  let ssTotal = (y_estimated - meanY) * (y_estimated - meanY) 
-                                                  let ssError = (y - y_estimated) * (y - y_estimated)
-                                                  (accT + ssTotal,accE + ssError)
-                                                  ) (0.,0.)
+            |> Seq.fold (fun (stateSST,stateSSE) (x,a) -> 
+                                           let ex    = fitFunc x
+                                           let dSSe = ex - a
+                                           let dSSt = a - meanY
+                                           (stateSST + dSSt*dSSt,stateSSE + dSSe*dSSe)
+                        ) (0.,0.)
+//        let sst,sse =                                     
+//            Seq.zip x_data y_data
+//            |> Seq.fold (fun (accT,accE) (x,y) -> let y_estimated = fitFunc x
+//                                                  let ssTotal = (y_estimated - meanY) * (y_estimated - meanY) 
+//                                                  let ssError = (y - y_estimated) * (y - y_estimated)
+//                                                  (accT + ssTotal,accE + ssError)
+//                                                  ) (0.,0.)
         
         let dfR = float order
         let MSR = (sst-sse) / dfR

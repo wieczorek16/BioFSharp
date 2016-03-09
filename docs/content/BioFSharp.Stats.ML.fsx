@@ -60,6 +60,7 @@ BioFSharp ML module
 --------------------
 Principal component analysis of the iris data set and visual inspection of the result.
 *)
+open BioFSharp.Stats.ML
 open BioFSharp.Stats.ML.Unsupervised
 
 
