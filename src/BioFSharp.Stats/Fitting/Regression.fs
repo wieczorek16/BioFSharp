@@ -33,54 +33,74 @@ module Regression =
 //        let p = X.QR().Solve(y)
 //        let (a,b) = (p.[0], p.[1])
  
- 
- 
- 
- 
-//        /// <summary>
-//        ///   Gets the coefficient of determination, as known as the R-Squared (R²)
-//        /// </summary>
-//        /// 
-//        /// <remarks>
-//        ///    The coefficient of determination is used in the context of statistical models
-//        ///    whose main purpose is the prediction of future outcomes on the basis of other
-//        ///    related information. It is the proportion of variability in a data set that
-//        ///    is accounted for by the statistical model. It provides a measure of how well
-//        ///    future outcomes are likely to be predicted by the model.
-//        ///    
-//        ///    The R^2 coefficient of determination is a statistical measure of how well the
-//        ///    regression approximates the real data points. An R^2 of 1.0 indicates that the
-//        ///    regression perfectly fits the data.
-//        /// </remarks>
-//        /// 
-//        public static double Determination(double[] actual, double[] expected)
-//        {
-//            // R-squared = 100 * SS(regression) / SS(total)
-//
-//            double SSe = 0.0;
-//            double SSt = 0.0;
-//            double avg = 0.0;
-//            double d;
-//
-//            // Calculate expected output mean
-//            for (int i = 0; i < expected.Length; i++)
-//                avg += expected[i];
-//            avg /= expected.Length;
-//
-//            // Calculate SSe and SSt
-//            for (int i = 0; i < expected.Length; i++)
-//            {
-//                d = expected[i] - actual[i];
-//                SSe += d * d;
-//
-//                d = expected[i] - avg;
-//                SSt += d * d;
-//            }
-//
-//            // Calculate R-Squared
-//            return 1.0 - (SSe / SSt);
-//        } 
- 
+    /// Three sum of squares 
+    type SumOfSquares = {
+        /// Regression sum of squares (SSR - explained) 
+        Regression : float
+        /// Error sum of squares (SSE - unexplained)
+        Error      : float        
+        /// Total sum of squares (SST - total)
+        Total      : float        
+        SSxx       : float
+        SSxy       : float
+        MeanX      : float
+        MeanY      : float
+        /// Count N
+        Count      : float
+        
+        }
+    
+    let createSumOfSquares ssr sse sst ssxx ssxy meanX meanY count =
+        {Regression=ssr; Error=sse; Total=sst; SSxx=ssxx; SSxy=ssxy; MeanX = meanX;MeanY =meanY; Count=count}
+              
+    ///  
+    let calulcateSumOfSquares (fitFunc:float -> float)  (x_data : seq<float>) (y_data : seq<float>) = 
+        let meanX = StatisticalMeasure.mean x_data
+        let meanY = StatisticalMeasure.mean y_data
+        let count,sst,sse,ssxx,ssxy =
+            Seq.zip x_data y_data
+            |> Seq.fold (fun (counter,stateSST,stateSSE,stateSSxx,stateSSxy) (x,y) -> 
+                                           let exY   = fitFunc x
+                                           let dSSe  = exY - y
+                                           let dSSt  = y - meanY
+                                           let dssxx = x - meanX 
+                                           let ssxy  = dssxx * dSSt 
+                                           (counter+1., stateSST + dSSt*dSSt, stateSSE + dSSe*dSSe, stateSSxx + dssxx*dssxx, stateSSxy + ssxy)
+                        ) (0.,0.,0.,0.,0.)       
+        createSumOfSquares (sst - sse) sse sst ssxx ssxy meanX meanY count
+
+    /// Standard deviation of y(x) 
+    // Square root of variance s2y,x
+    let stDevY (sumOfSqures:SumOfSquares) =
+        sumOfSqures.Error / (sumOfSqures.Count - 2.) |> sqrt
+
+    /// Standard deviation of slope (beta)    
+    let stDevSlope (sumOfSqures:SumOfSquares) =
+        ( sumOfSqures.Error / (sumOfSqures.Count - 2.) ) / sumOfSqures.SSxx
+
+    /// Standard deviation of intercept (alpha)
+    let stDevIntercept (sumOfSqures:SumOfSquares) =
+         let s2yx = sumOfSqures.Error / (sumOfSqures.Count - 2.) 
+         let mx2  = sumOfSqures.MeanX*sumOfSqures.MeanX
+         s2yx * ((1./sumOfSqures.Count) + (mx2/sumOfSqures.SSxx))
+        
+
+    let ttestSlope slope (sumOfSqures:SumOfSquares) =
+        let sb = stDevSlope sumOfSqures |> sqrt
+        let statistic =  slope / sb 
+        let TTest = new Testing.TestStatistics.TTEST(statistic,sumOfSqures.Count - 2.)
+        TTest
+
+    let ttestIntercept intercept (sumOfSqures:SumOfSquares) =
+        let si = stDevIntercept sumOfSqures |> sqrt
+        let statistic =  intercept / si 
+        let TTest = new Testing.TestStatistics.TTEST(statistic,sumOfSqures.Count - 2.)
+        TTest
+
+    let calulcateDetermination (sumOfSqures:SumOfSquares) =
+        sumOfSqures.Regression / sumOfSqures.Total
+        
+
     /// Gets the coefficient of determination, as known as the R-Squared (R²)
     (*
         ///    The coefficient of determination is used in the context of statistical models
@@ -93,7 +113,7 @@ module Regression =
         ///    regression approximates the real data points. An R^2 of 1.0 indicates that the
         ///    regression perfectly fits the data.
     *)
-    let calulcateDetermination (actual:seq<float>) (expected:seq<float>) = 
+    let calulcateDeterminationFromValue (actual:seq<float>) (expected:seq<float>) = 
         let meanY = MathNet.Numerics.Statistics.Statistics.Mean actual
         let SSE,SST =
             Seq.zip actual expected
@@ -107,14 +127,15 @@ module Regression =
 
     /// Calculates Akaike information criterion (AIC) which is a measure of the relative quality of a regression model for a given set of data    
     // ! Formula used for regression only (because number of model parameter are missing)
-    let calcAIC order n sse = 
-        n * (log (sse / n)) + (2. * order)
+    // k = 2 for usual AIC
+    let calcAIC k n sse = 
+        n * (log (sse / n)) + (2. * k)
 
 
     /// Calculates Bayesian information criterion (BIC) which is a measure of the relative quality of a regression model for a given set of data
     // ! Formula used for regression only (because number of model parameter are missing)
-    let calcBIC (order:float) n sse = 
-        n * log (sse/n) + order * log (n) 
+    let calcBIC (k:float) n sse = 
+        n * log (sse/n) + k * log (n) 
     
     /// Calculates the residuals
     let getResiduals (fitFunc:float -> float)  (x_data : Vector<float>) (y_data : Vector<float>) = 
@@ -167,7 +188,11 @@ module Regression =
         let dfT = float (x_data.Count - 1)
         let MST = sst / dfT
         // MS regression / MS Residual
-        let FTest = new Testing.TestStatistics.FTEST(MSR / MSE, dfR, dfE)
+        let FTest = 
+            try 
+                new Testing.TestStatistics.FTEST(MSR / MSE, dfR, dfE)
+            with 
+                | _ as e -> new Testing.TestStatistics.FTEST(0.0, dfR, dfE)
         
         [| Testing.Anova.createAnovaVariationSource dfR MSR FTest.PValue Testing.Anova.VariationSource.Regression FTest.Statistic (sst-sse); 
            Testing.Anova.createAnovaVariationSource dfE MSE nan          Testing.Anova.VariationSource.Residual   nan sse;
