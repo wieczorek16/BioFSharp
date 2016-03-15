@@ -32,8 +32,10 @@ for gene fastA use: `OptionConverter.charToOptionStandardNucleotid`.
 
 *)
 
+open BioSequences
 
-let converter = BioSequences.OptionConverter.charToOptionStandardAminoAcid
+let converter = 
+    BioSequences.ofAminoAcidStringWithOptionConverter (OptionConverter.charToOptionStandardAminoAcid)
 
 // Path to .fastA file
 let fastaPath = __SOURCE_DIRECTORY__ + "/data/chlamy3proteins.fasta"

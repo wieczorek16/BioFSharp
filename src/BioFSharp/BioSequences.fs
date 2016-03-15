@@ -121,26 +121,26 @@ module BioSequences =
 
 
     /// Generates amino acid sequence of one-letter-code string using given OptionConverter
-    let ofAminoAcidStringWithOptionConverter (converter:OptionConverter.AminoAcidOptionConverter) (s:string) =          
+    let ofAminoAcidStringWithOptionConverter (converter:OptionConverter.AminoAcidOptionConverter) (s:#seq<char>) =          
         s
         |> Seq.choose converter
         |> Seq.toArray |> BSequence
 
     /// Generates amino acid sequence of one-letter-code raw string
-    let ofAminoAcidString (s:string) =          
+    let ofAminoAcidString (s:#seq<char>) =          
         s
         |> Seq.choose OptionConverter.charToOptionAminoAcid
         |> Seq.toArray |> BSequence
 
 
     /// Generates nucleotide sequence of one-letter-code string using given OptionConverter
-    let ofNucleotideStringWithOptionConverter (converter:OptionConverter.NucleotideOptionConverter) (s:string) =             
+    let ofNucleotideStringWithOptionConverter (converter:OptionConverter.NucleotideOptionConverter) (s:#seq<char>) =             
         s
         |> Seq.choose converter
         |> Seq.toArray |> BSequence
         
     /// Generates nucleotide sequence of one-letter-code raw string
-    let ofNucleotideString (s:string) =             
+    let ofNucleotideString (s:#seq<char>) =             
         s
         |> Seq.choose OptionConverter.charToOptionNucleotid           
         |> Seq.toArray |> BSequence
